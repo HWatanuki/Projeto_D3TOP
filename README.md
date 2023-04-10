@@ -16,16 +16,11 @@ XXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXX
 
 # c) Descrição da base de dados
+A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping chamada Apify (https://apify.com/dtrungtin/airbnb-scraper). O Airbnb Scraper possibilita processar os anúncios do Airbnb e obter detalhes tais como localidade, preços, reviews, notas, imagens, informações sobre proprietários e hóspedes, etc. A extração pode ser realizada por localidade ou com base em um anúncio específico.
 
-A base de dados utilizada no trabalho foi a da Comissão de Taxi e Limousine da cidade de Nova York (https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page). 
-
-Essa base contém registros de viagens de passageiros de taxi da cidade de Nova York com os seguintes atributos:
-- Local, data e hora da partida e chegada de cada viagem
-- Distância, custo, tarifa e número de passageiros de cada viagem
-
-Para as análises foram selecionados 2 datasets:
-- 1 dataset contendo as viagens realizadas no mês de Janeiro de 2017 (escolha aleatoria apenas para exemplificar a analise): 9.710.124 registros
-- 1 dataset contendo os códigos e descrições das áreas da cidade de Nova York: 265 registros
+Para o treinamento do modelo foram selecionados 2 datasets:
+- 1 dataset contendo os anúncios da cidade de São Paulo: XXXXXX registros
+- 1 dataset contendo os anúncios da cidade de Nova York: XXXXXX registros
 
 Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Trabalho_D2TEC/tree/main/Datasets
 
@@ -51,14 +46,7 @@ O schema do dataset de viagens possui a seguinte estrutura:
 
 Visualizacao do dataset de viagens bruto
 
-![image](https://user-images.githubusercontent.com/50485300/200210322-6899b9c8-8b80-4789-822e-d1e9237e0769.png)
 
-O schema do dataset de bairros de NY possui a seguinte estrutura:
-  
-    STRING LocationID;  // Codigo identificador das zonas de taxi
-    STRING Borough; // Bairro da zona
-    STRING Zone; // Nome da zona
-    STRING service_zone; // Categoria de servico da zona
   
 Visualizacao do dataset de bairros de NY bruto
 
@@ -66,7 +54,6 @@ Visualizacao do dataset de bairros de NY bruto
 
 
 # d) Etapa de limpeza e pré-processamento
-
 A etapa de limpeza e pré-processamento dos dados objetivou num primeiro momento tratar adequadamente os dados brutos contidos no arquivo .csv extraído via Apify.
 
 Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.ipynb
