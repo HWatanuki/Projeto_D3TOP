@@ -12,7 +12,7 @@ O objetivo deste repositório é fornecer um conjunto de instruções, arquivos 
 # a) Descrição e motivação do problema
 XXXXXXXXXXXXXXXXX
 
-# b) Objetivo de negócio ou científico associado ao problema.
+# b) Objetivo de negócio ou científico associado ao problema
 XXXXXXXXXXXXXXXXX
 
 # c) Descrição da base de dados
