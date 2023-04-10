@@ -67,11 +67,9 @@ Visualizacao do dataset de bairros de NY bruto
 
 # d) Etapa de limpeza e pré-processamento
 
-O tratamento e análise dos dados objetivou proporcionar a um motorista de taxi da cidade de NY insumos para uma estratégia de trabalho. 
-Para isso, uma vez tratados os dados, os mesmos serviram para um entendimento sobre o padrao das viagens ao longo dos dias e horas do mes, bem como as regioes com as viagens e gorjetas mais elevadas. 
-Por fim, uma funcao foi elaborada com base nos dados historicos medios para permitir ao motorista estimar o valor, duracao e distancia de uma viagem com base no local de embarque/desembarque, dia e hora de inicio da viagem. 
+A etapa de limpeza e pré-processamento dos dados objetivou num primeiro momento tratar adequadamente os dados brutos contidos no arquivo .csv extraído via Apify.
 
-Os códigos utilizados para tratament e consultas dos dados estão disponíveis aqui: https://github.com/HWatanuki/Trabalho_D2TEC/tree/main/Codigos
+Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.ipynb
 
 
 
