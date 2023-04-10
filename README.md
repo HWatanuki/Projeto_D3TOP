@@ -22,36 +22,41 @@ Para o treinamento do modelo foram selecionados 2 datasets:
 - 1 dataset contendo os anúncios da cidade de São Paulo: XXXXXX registros
 - 1 dataset contendo os anúncios da cidade de Nova York: XXXXXX registros
 
-Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Trabalho_D2TEC/tree/main/Datasets
+Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Projeto_D3TOP/tree/main/Datasets
 
-O schema do dataset de viagens possui a seguinte estrutura:
+O schema dos datasets de treinamento possuem a seguinte estrutura:
 
-    STRING VendorID; // codigo indicando a companhia associada a viagem
-    STRING tpep_pickup_datetime; // data e hora do embarque
-    STRING tpep_dropoff_datetime; // data e hora do desembarque
-    STRING passenger_count; // numero de passageiros
-    STRING trip_distance; // distancia da viagem
-    STRING RatecodeID; // codigo final de cobranca da viagem
-    STRING store_and_fwd_flag; // codigo que indica se os dados da viagem foram gravados no veiculo por falta de conexao
-    STRING PULocationID; // codigo do local de embarque
-    STRING DOLocationID; // codigo do local de desembarque
-    STRING payment_type; // tipo do pagamento (dinheiro,cartao,etc)
-    STRING fare_amount; // valor da corrida no taximetro
-    STRING extra;  // tarifas extras nos horarios de pico
-    STRING mta_tax; // imposto extra em funcao da taxa do taximetro
-    STRING tip_amount; // valor da gorjeta
-    STRING tolls_amount; // valor dos pedagios
-    STRING improvement_surcharge; // taxa compensatoria para viagens curtas
-    STRING total_amount; // valor total recebido do passageiro
-
-Visualizacao do dataset de viagens bruto
-
-
-  
-Visualizacao do dataset de bairros de NY bruto
-
-![image](https://user-images.githubusercontent.com/50485300/200210396-e4403d5e-bd37-443e-a7ff-7d8c9c2b1a54.png)
-
+    url // a url do anúncio
+    name // o nome do anúncio
+    stars // a nota de avaliação do anúncio
+    numberOfGuests // numero de hóspedes permitidos
+    address // endereço da propriedade
+    roomType // tipo da propriedade
+    location // latitude e longitude da propriedade
+    reviews // avaliações da propriedade
+        author // dados de perfil do autor da avaliação
+        comments // texto com o comentário da avaliação
+        createdAt // data de criação da avaliação
+        id // identificador da avaliação
+        collectionTag // tag
+        rating // nota dada pelo avaliador
+        recipient // destinatário da avaliação
+        response // texto com a réplica do proprietário
+        localizedDate // data da avaliação
+        localizedReview //
+    pricing // dados de custo da propriedade
+        rate // tarifa de ocupação
+        rateType // tipo da tarifa
+        rateBreakdown // tarifa por data específica
+        nights // quantidade de diárias
+        totalPrice // preço total
+    photos // fotos do anúncio
+        caption // legenda da foto
+        pictureUrl // URL da foto
+        thumbnailUrl // URL da foto miniatura
+    primaryHost // perfil do proprietário
+    additionalHosts // perfil dos co-anfitriões
+    isHostedBySuperhost // proprietário qualificado
 
 # d) Etapa de limpeza e pré-processamento
 A etapa de limpeza e pré-processamento dos dados objetivou num primeiro momento tratar adequadamente os dados brutos contidos no arquivo .csv extraído via Apify.
