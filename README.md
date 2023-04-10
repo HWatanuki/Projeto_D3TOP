@@ -2,7 +2,7 @@
 Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de Especialização em Ciência de Dados do IFSP Campinas.
 
 # Membros do grupo: 
-- Gabrielly Baratela de Carvalho
+- Gabrielly Baratela
 - Halisson Gomides
 - Hugo Martinelli Watanuki (CP3016692)
 
