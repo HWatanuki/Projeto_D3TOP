@@ -2,9 +2,9 @@
 Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de Especialização em Ciência de Dados do IFSP Campinas.
 
 # Membros do grupo: 
-- Gabrielly Bratela
+- Gabrielly Baratela de Carvalho
 - Halisson Gomides
-- Hugo Martinelli Watanuki
+- Hugo Martinelli Watanuki (CP3016692)
 
 # Sistema de recomendação de propriedades para hospedagem
 O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de recomendação de propriedades litadas na plataforma Airbnb com base em dados de entrada fornecidos por um usuário sobre suas preferências de hospedagem. 
