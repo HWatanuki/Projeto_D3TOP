@@ -3,7 +3,7 @@ Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de
 
 # Membros do grupo: 
 - Gabrielly Baratela
-- Halisson Gomides
+- Halisson Souza Gomides (CP3016382)
 - Hugo Martinelli Watanuki (CP3016692)
 
 # Sistema de recomendação de propriedades para hospedagem
