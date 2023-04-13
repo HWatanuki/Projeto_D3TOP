@@ -60,9 +60,12 @@ A lista completa de atributos disponíveis nos anúncios processados pelo Airbnb
     stars // a nota de avaliação da propriedade
     url // a url do anúncio
        
- Para auxiliar com o desenvovlimento da solução proposta, inicialmente foram selecionados dois conjuntos de dados:
+ Para auxiliar com o desenvovlimento da solução proposta, inicialmente foram extraídos dois conjuntos de dados:
+ 
 - 1 dataset contendo os anúncios da cidade de São Paulo: XXXXXX registros
 - 1 dataset contendo os anúncios da cidade de Nova York: XXXXXX registros
+
+O objetivo dessa primeira extração foi selecionar anúncios de cidades populosas e localizadas em diferentes países com o intuito de obter uma amostra de anúncios com maior diversidade de imóveis para aluguel de curta temporada, bem como que contivessem comentários em mais do que um idioma.
 
 Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Projeto_D3TOP/tree/main/Datasets
   
