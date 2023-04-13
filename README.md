@@ -20,7 +20,7 @@ O objetivo deste trabalho é desenvolver um protótipo de uma solução de anál
 Os conjuntos de dados a serem extraídos, processados e analisados consistem nos anúncios de aluguel de curta duração e seus respectivos atributos. Num primeiro momento, os dados serão extraídos com o auxílio de ferramentas de web scraping. Em seguida, técnicas de processamento de linguagem natural serão aplicadas para limpeza, pré-processamento e estruturação dos dados. Por fim, a solução se apoiará em algoritmos de machine learning para fornecer capacidade de análise adequada às necessidades de análise especificada pelo usuário.
 
 # c) Descrição da base de dados
-A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping disponível no Apify: o Airbnb Scrapper (https://apify.com/dtrungtin/airbnb-scraper). 
+A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping disponível no Apify: o Airbnb Scraper (https://apify.com/dtrungtin/airbnb-scraper). 
 
 O Airbnb Scraper possibilita processar os anúncios do Airbnb e obter detalhes tais como localidade, preços, reviews, notas, imagens, informações sobre proprietários e hóspedes, etc. A extração pode ser realizada por localidade ou com base em um anúncio específico.
 
@@ -60,10 +60,10 @@ A lista completa de atributos disponíveis nos anúncios processados pelo Airbnb
     stars // a nota de avaliação da propriedade
     url // a url do anúncio
        
- Para auxiliar com o desenvovlimento da solução proposta, inicialmente foram extraídos dois conjuntos de dados:
+ Para auxiliar com o desenvolvimento da solução proposta, inicialmente foram extraídos dois conjuntos de dados em formato .csv via o Airbnb Scraper:
  
-- 1 dataset contendo os anúncios da cidade de São Paulo: XXXXXX registros
-- 1 dataset contendo os anúncios da cidade de Nova York: XXXXXX registros
+- 1 dataset contendo 547 anúncios da cidade de São Paulo
+- 1 dataset contendo 547 anúncios da cidade de Nova York
 
 O objetivo dessa primeira extração foi selecionar anúncios de cidades populosas e localizadas em diferentes países com o intuito de obter uma amostra de anúncios com maior diversidade de imóveis para aluguel de curta temporada, bem como que contivessem comentários em mais do que um idioma.
 
@@ -71,7 +71,27 @@ Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Pr
   
 
 # d) Etapa de limpeza e pré-processamento
-A etapa de limpeza e pré-processamento dos dados objetivou num primeiro momento tratar adequadamente os dados brutos contidos no arquivo .csv extraído via Apify.
+A etapa de limpeza e pré-processamento dos dados objetivou num primeiro momento dar uma estruturação mínima e maior qualidade aos dados brutos contidos nos datasets gerados por meio do Airbnb Scraper.
+
+Após a conversão do dataset em um dataframe, as seguintes operações principais foram executadas em sequência:
+
+- Remoção de colunas contendo metadados não críticos 
+- Análise e remoção de missing values
+- Tratamento dos campos contendo textos em formato natural 
+  * Conversão para Minúsculas.
+  * Remoção de tags HTML.
+  * Remoção de pontuacoes.
+  * Remoção de algarismos numericos e numeros de telefone.
+  * Remoção de multiplos espacos.
+  * Remoção de URLs e E-mails.
+  * Substituicao de Emojis.
+  * Substituicao de nomes de usuário.
+  * Remoção de acentuacao.
+  * Remoção caracteres especiais.
+  * Remoção de 3 ou mais letras consecutivas.
+  * Remoção de palavras curtas.
+  * Remoção de Stopwords.
+  * Lematização.
 
 Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.ipynb
 
