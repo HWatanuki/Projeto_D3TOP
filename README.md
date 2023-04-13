@@ -60,7 +60,7 @@ A lista completa de atributos disponíveis nos anúncios processados pelo Airbnb
     stars // a nota de avaliação da propriedade
     url // a url do anúncio
        
- Para auxiliar com o desenvolvimento da solução proposta, inicialmente foram extraídos dois conjuntos de dados em formato .csv via o Airbnb Scraper:
+ Para auxiliar com o desenvolvimento da solução proposta, inicialmente e apenas para fins exploratórios, foram extraídos dois conjuntos de dados em formato .csv via o Airbnb Scraper:
  
 - 1 dataset contendo 547 anúncios da cidade de São Paulo
 - 1 dataset contendo 547 anúncios da cidade de Nova York
