@@ -18,6 +18,8 @@ XXXXXXXXXXXXXXXXX
 # c) Descrição da base de dados
 A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping chamada Apify (https://apify.com/dtrungtin/airbnb-scraper). O Airbnb Scraper possibilita processar os anúncios do Airbnb e obter detalhes tais como localidade, preços, reviews, notas, imagens, informações sobre proprietários e hóspedes, etc. A extração pode ser realizada por localidade ou com base em um anúncio específico.
 
+![image](https://user-images.githubusercontent.com/50485300/231625892-ab5b3305-0090-464c-b646-10118da151ed.png)
+
 Para o treinamento do modelo foram selecionados 2 datasets:
 - 1 dataset contendo os anúncios da cidade de São Paulo: XXXXXX registros
 - 1 dataset contendo os anúncios da cidade de Nova York: XXXXXX registros
