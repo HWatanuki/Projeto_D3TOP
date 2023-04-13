@@ -93,7 +93,8 @@ Após a conversão do dataset em um dataframe, as seguintes operações principa
   * Remoção de Stopwords.
   * Lematização.
 
-Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.ipynb
+Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: 
+https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.1.ipynb
 
 
 
