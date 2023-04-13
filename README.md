@@ -6,13 +6,13 @@ Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de
 - Halisson Souza Gomides (CP3016382)
 - Hugo Martinelli Watanuki (CP3016692)
 
-# Sistema de recomendação de propriedades para hospedagem
-O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de recomendação de propriedades litadas na plataforma Airbnb com base em dados de entrada fornecidos por um usuário sobre suas preferências de hospedagem. 
+# Sistema de análise do mercado de aluguel de curta duração
+O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de apoio à tomada de decisão para investimento no mercado de aluguel de curta duração com base em dados disponíveis na plataforma Airbnb. 
 
-# a) Descrição e motivação do problema
-XXXXXXXXXXXXXXXXX
+# a) Descrição e motivação do problema (verificar com a Gaby)
+A decisão de investimento em um imóvel para a finalidade de aluguel de curta duração deve ser baseada em dados, informação e conhecimento nem sempre prontamente disponíveis. Questões tais como *"Quais os tipos de imóveis mais comuns em um determinada localidade? Qual a característica dos imóveis que apresentam maior taxa de ocupação média? Quais os atributos dos imovéis são mais destacados pelos hóspedes em seus comentários?"*, a princípio, podem ser respondidas a partir da análise de dados provenientes de plataformas de aluguel de curta duração, como por exemplo, o Airbnb. Contudo, o desafio para analisar tais dados tem início na própria fonte primária dos mesmos: tais dados usualmente não estão prontamente acessíveis ou estruturados o suficiente para apoiar soluções de análise mais complexas ou elaboradas. Na tentativa de endereçar esse primeiro desafio, o uso de ferramentas de web scraping e abordagens de processamento de linguagem natural pode representar uma alternativa viável.
 
-# b) Objetivo de negócio ou científico associado ao problema
+# b) Objetivo de negócio ou científico associado ao problema (verificar com a Gaby)
 XXXXXXXXXXXXXXXXX
 
 # c) Descrição da base de dados
@@ -24,7 +24,7 @@ O conjunto de dados extraídos pelo Airbnb Scraper consiste numa estrutura relac
 
 ![image](https://user-images.githubusercontent.com/50485300/231626884-dd9a6abd-5527-4720-8a67-bd12b1628037.png)
 
-A lista completa de atributos disponível nos anúncios processados pelo Airbnb Scraper é apresentada abaixo:
+A lista completa de atributos disponíveis nos anúncios processados pelo Airbnb Scraper é apresentada abaixo:
 
     additionalHosts // perfil dos co-anfitriões
     address // local da propriedade
@@ -51,7 +51,7 @@ A lista completa de atributos disponível nos anúncios processados pelo Airbnb 
         recipient // destinatário da avaliação
         response // texto com a réplica do proprietário
         localizedDate // data da avaliação
-        localizedReview // avalição local   
+        localizedReview // avaliação local   
     roomType // tipo da propriedade 
     stars // a nota de avaliação da propriedade
     url // a url do anúncio
