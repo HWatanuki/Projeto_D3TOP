@@ -6,7 +6,7 @@ Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de
 - Halisson Souza Gomides (CP3016382)
 - Hugo Martinelli Watanuki (CP3016692)
 
-# Sistema de análise do mercado de aluguel de curta duração
+# Sistema de análise do mercado de aluguel de curta temporada
 O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de apoio à tomada de decisão para escolha de imóvel para aluguel de curta temporada com base em dados disponíveis na plataforma Airbnb (https://www.airbnb.com/). 
 
 # a) Descrição e motivação do problema
@@ -99,7 +99,7 @@ Após a conversão do dataset em um dataframe, as seguintes operações principa
   * Lematização.
 
 Os códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: 
-https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.1.ipynb
+https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.2.ipynb
 
 
 
