@@ -2,24 +2,29 @@
 Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de Especialização em Ciência de Dados do IFSP Campinas.
 
 # Membros do grupo: 
-- Gabrielly Baratela
+- Gabrielly Baratela (CP3016331)
 - Halisson Souza Gomides (CP3016382)
 - Hugo Martinelli Watanuki (CP3016692)
 
 # Sistema de análise do mercado de aluguel de curta duração
-O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de apoio à tomada de decisão para investimento no mercado de aluguel de curta duração com base em dados disponíveis na plataforma Airbnb (https://www.airbnb.com/). 
+O objetivo deste repositório é fornecer um conjunto de instruções, arquivos de configuração e códigos para a implantação de uma solução de apoio à tomada de decisão para escolha de imóvel para aluguel de curta temporada com base em dados disponíveis na plataforma Airbnb (https://www.airbnb.com/). 
 
-# a) Descrição e motivação do problema (verificar com a Gaby)
-A decisão de investimento em um imóvel para a finalidade de aluguel de curta duração deve ser baseada em dados, informação e conhecimento nem sempre prontamente disponíveis. Questões tais como *"Quais os tipos de imóveis mais comuns em um determinada localidade? Qual a característica dos imóveis que apresentam maior taxa de ocupação média? Quais os atributos dos imovéis são mais destacados pelos hóspedes em seus comentários?"*, a princípio, podem ser respondidas a partir da análise de dados provenientes de plataformas de aluguel de curta duração, como por exemplo, o Airbnb. 
+# a) Descrição e motivação do problema
 
-Contudo, o desafio para analisar tais dados tem início na própria fonte primária dos mesmos: tais dados usualmente não estão prontamente acessíveis ou estruturados o suficiente para apoiar soluções de análise mais complexas ou elaboradas. Na tentativa de endereçar esse primeiro desafio, o uso de ferramentas de web scraping e abordagens de processamento de linguagem natural pode representar uma alternativa viável.
+A decisão de investimento em um imóvel para a finalidade de aluguel de curta temporada deve considerar diversos fatores, como *"Quais os tipos de imóveis mais comuns em um determinada localidade? Qual a característica dos imóveis que apresentam maior taxa de ocupação média? Quais os atributos dos imovéis são mais destacados pelos hóspedes em seus comentários? Qual a proximidade dos pontos turísticos da região? Quais são as regiões mais escolhidas na localidade buscada?"*. Essas respostas costumam surgir provenientes de diversas buscas e análises superficiais dos dados de anúncios feitas pelos próprios locatários, ao exercitarem a comparação visual dos anúncios e suas diferenças. Uma vez que todas esses dados estão disponíveis virtualmente, pode ser muito mais eficiente o uso de estatística e inteligência artificial para análises estruturadas que orientem essa tomada de decisão. 
 
-# b) Objetivo de negócio ou científico associado ao problema (verificar com a Gaby)
-O objetivo deste trabalho é desenvolver um protótipo de uma solução de análise de dados do mercado de aluguel de curta duração. Para essa finalidade serão utilizados conjuntos de dados extraídos da plataforma Airbnb. 
+# b) Objetivo de negócio ou científico associado ao problema
 
-Os conjuntos de dados a serem extraídos, processados e analisados consistem nos anúncios de aluguel de curta duração e seus respectivos atributos. Num primeiro momento, os dados serão extraídos com o auxílio de ferramentas de web scraping. Em seguida, técnicas de processamento de linguagem natural serão aplicadas para limpeza, pré-processamento e estruturação dos dados. Por fim, a solução se apoiará em algoritmos de machine learning para fornecer capacidade de análise adequada às necessidades de análise especificada pelo usuário.
+O objetivo deste trabalho é desenvolver um protótipo de sistema de recomendações de anúncios de imóveis para aluguel, de acordo com o interesse e o perfil desejado do locatário, para orientar a melhor tomada de decisão e simplificar sua jornada de busca e comparação de anúncios.
+
+O desafio tem início na própria origem dos dados: desde a captura automatizada à estruturação da base em atributos delimitados; e segue relevante para o sistema de recomendação, uma vez que nem todos os dados estão prontamente consolidados nos anúncios das plataformas. 
+
+Na tentativa de endereçar o primeiro desafio, o uso de ferramentas de web scraping e abordagens de processamento de linguagem natural pode representar uma alternativa viável. Por fim, a solução se apoiará em algoritmos de machine learning para fornecer as recomendações adaptadas às necessidades do locatário.
 
 # c) Descrição da base de dados
+
+Os conjuntos de dados a serem extraídos, processados e analisados consistem nos anúncios de aluguel de curta duração da plataforma Airbnb e seus respectivos atributos. Num primeiro momento, os dados serão extraídos com o auxílio de ferramentas de web scraping. Em seguida, técnicas de processamento de linguagem natural serão aplicadas para limpeza, pré-processamento e estruturação dos dados. 
+
 A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping disponível no Apify: o Airbnb Scraper (https://apify.com/dtrungtin/airbnb-scraper). 
 
 O Airbnb Scraper possibilita processar os anúncios do Airbnb e obter detalhes tais como localidade, preços, reviews, notas, imagens, informações sobre proprietários e hóspedes, etc. A extração pode ser realizada por localidade ou com base em um anúncio específico.
