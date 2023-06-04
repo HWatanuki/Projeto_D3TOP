@@ -125,12 +125,12 @@ Utilizamos o método TF-IDF para coletar as palavras mais relevantes dos reviews
 Para a modelagem, realizamos duas abordagens:
 
 
-**1. TF-IDF Vectorizer + SVM:**
+### 1. TF-IDF Vectorizer + SVM:
 
 Decidimos realizar modelagem com o TF-IDF Vectorizer e SVM (support vector machines) para realizar recomendações baseadas em palavras-chave das reviews realizadas pelos usuários. Fizemos um teste e os resultados não estavam aderentes, portanto, **optamos por não seguir com essa abordagem.**
     
     
-**2. BERT pré-treinado com o modelo `bert-base-uncased`:**
+### 2. BERT pré-treinado com o modelo `bert-base-uncased`:
 
 BERT (Bidirectional Encoder Representations from Transformers) é um modelo de Deep Learning criado por pesquisadores do Google AI Language. A principal vantagem do BERT é a aplicação do treinamento bidirecional do Transformer (um modelo de atenção) ao NLP, isso é, que pode ter um senso mais profundo de contexto e fluxo de linguagem uma vez que entende a sequência de texto da esquerda para a direita e da direita para a esquerda. Além disso, utilizar um modelo pré-treinado evolui significativamente os resultados do modelo após ajuste fino, e com drástica redução de esforço de treinamento. 
 
