@@ -1,5 +1,6 @@
-from flask import Flask, render_template, session, redirect, url_for, session, request
+from flask import Flask, render_template, session, redirect, url_for, request
 from flask_wtf import FlaskForm
+from flask_bootstrap import Bootstrap
 from wtforms import StringField,SubmitField,IntegerField
 from wtforms.validators import NumberRange
 
@@ -27,22 +28,26 @@ model = BertModel.from_pretrained(model_name)
 
 
 ## Function to use BERT and calcule cosine similarity for each text variable
-def fn_encode_covs_txt(cov, df, dict):
+def fn_encode_covs_txt(cov, df, dicionario):
     #print(cov)
     
     # Creating the corpus
-    vocabulary =list(df[cov].values)
-    vocabulary.append(dict[cov])
+    vocabulary =list(df[cov].fillna('').values)
+    print(vocabulary[:3])
+    print(dicionario[cov])
+    vocabulary.append(dicionario[cov])
+    print(vocabulary)
+    print(type(vocabulary))
 
     # Coding the query and recommended items
     encoded_inputs = tokenizer(vocabulary, padding=True, truncation=True, return_tensors='pt')
-
+    print(encoded_inputs)
     # Getting the text representations
     with torch.no_grad():
         outputs = model(**encoded_inputs)
         query_embeddings = outputs.last_hidden_state[0, 0, :]  # Query representation
         item_embeddings = outputs.last_hidden_state[1:, 0, :]  # Representations of recommended items
-
+    print('hello')
     # Calculating the cosine similarity
     cosine_similarity = torch.nn.functional.cosine_similarity(query_embeddings.unsqueeze(0), item_embeddings, dim=1)
 
@@ -53,26 +58,35 @@ def return_prediction(dataframe_full,guest_criteria,price_max_criteria,price_min
     #unused_columns = ['isAvailable','isHostedBySuperhost','location/lat','location/lng','photos/0/caption','photos/0/pictureUrl',]
     #dataframe = dataframe.drop(unused_columns, axis=1)
     dataframe_full['thumbnail'] = dataframe_full['photos/0/thumbnailUrl'].apply(lambda x: '<img src="{}"/>'.format(x) if x else '')
-    dataframe_full['url'] = '<a href="' + dataframe_full['url'] + '">' + dataframe_full['url'] + '</a>'
+    #dataframe_full['url'] = '<a href="' + dataframe_full['url'] + '">' + dataframe_full['url'] + '</a>'
+    dataframe_full['url'] = '<a href="' + dataframe_full['url'] + '"> Click here </a>'
     dataframe = dataframe_full[['address','name','stars','numberOfGuests','roomType','pricing/rate/amount','thumbnail','url','comments_list','summary']]
     #numeric_cols = ['numberOfGuests','pricing/rate/amount']
     #numeric_cols = ['numberOfGuests']
     #dataframe[numeric_cols] = dataframe[numeric_cols].apply(pd.to_numeric, errors='coerce', axis=1)
     filtered_df = dataframe[(dataframe['numberOfGuests'] == guest_criteria) & (dataframe['pricing/rate/amount'] <= price_max_criteria) & (dataframe['pricing/rate/amount'] >= price_min_criteria) & (dataframe['roomType'].str.contains(room_criteria, case=False))]
+    #print(type(guest_criteria))
+    #print(type(price_max_criteria))
+    #print(type(price_min_criteria))
+    #print(type(room_criteria))
+    #print(type(sim_criteria))
     #filtered_df = dataframe[dataframe['numberOfGuests'] == criteria]
     #return criteria
     
     # Covariates to be used in the model
     #covs = ['address', 'numberOfGuests', 'name', 'pricing/rate/amount', 'roomType', 'stars', 'summary']
     #covs = ['name', 'stars', 'summary']
-    covs = ['name', 'stars', 'summary']
-    covs_num = ['stars']
+    covs = ['summary']
+    covs_num = ['numberOfGuests', 'pricing/rate/amount', 'stars']
     covs_txt =  [c for c in covs if c not in covs_num]
     
     
     #chamar fn_encode for all covs_txt
-    user_input = ['near', 5, 'comfortable']
+    #user_input = ['near', 5, 'comfortable']
+    user_input = ['near']
     input_dict = dict(zip(covs, user_input))
+    #print(input_dict)
+
     cosine_similarity = list(map(lambda x: fn_encode_covs_txt(x, filtered_df, input_dict), covs_txt))
 
     # Normalizing the numeric covariates
@@ -103,7 +117,8 @@ app = Flask(__name__)
 # We will later learn much better ways to do this!!
 app.config['SECRET_KEY'] = 'someRandomKey'
 
-
+# Flask-Bootstrap requires this line
+Bootstrap(app)
 
 # Now create a WTForm Class
 # Lots of fields available:
@@ -154,7 +169,8 @@ def prediction():
     #user_similarity = ['near', 5, 'comfortable']
     #user_similarity = 'comfortable'
     
-    filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria=filter_core_attr)
+    #filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria=filter_core_attr)
+    filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria='comfortable')
     #filtered_results = return_prediction(dataframe=df,criteria=filter_guest_no)
     # Rest of the code to filter the DataFrame based on the category
     #return render_template('prediction.html',tables=[filtered_results.to_html()], titles=[''])
