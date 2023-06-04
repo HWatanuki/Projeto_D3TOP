@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, redirect, url_for, request
 from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap
 from wtforms import StringField,SubmitField,IntegerField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import NumberRange
 
 #import numpy as np  
 #from tensorflow.keras.models import load_model
@@ -18,11 +18,7 @@ from sklearn.preprocessing import StandardScaler
 #flower_scaler = joblib.load('iris_scaler.pkl')
 #df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-relevant_words_2023-04-13_03-28-09-439.csv')
 #df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-spacy_2023-04-13_03-28-09-439.csv')
-#df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv')
-
-file_path = 'https://media.githubusercontent.com/media/HWatanuki/Projeto_D3TOP/main/Datasets/processed/'
-file_name = 'dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv'
-df = pd.read_csv(file_path + file_name)
+df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv')
 
 # Loading pre-trained bert
 model_name = 'bert-base-uncased'
@@ -32,26 +28,26 @@ model = BertModel.from_pretrained(model_name)
 
 
 ## Function to use BERT and calcule cosine similarity for each text variable
-def fn_encode_covs_txt(cov, df, dic):
+def fn_encode_covs_txt(cov, df, dicionario):
     #print(cov)
     
     # Creating the corpus
     vocabulary =list(df[cov].fillna('').values)
-    #print(vocabulary[:3])
-    #print(dicionario[cov])
-    vocabulary.append(dic[cov])
-    #print(vocabulary)
-    #print(type(vocabulary))
+    print(vocabulary[:3])
+    print(dicionario[cov])
+    vocabulary.append(dicionario[cov])
+    print(vocabulary)
+    print(type(vocabulary))
 
     # Coding the query and recommended items
     encoded_inputs = tokenizer(vocabulary, padding=True, truncation=True, return_tensors='pt')
-    #print(encoded_inputs)
+    print(encoded_inputs)
     # Getting the text representations
     with torch.no_grad():
         outputs = model(**encoded_inputs)
         query_embeddings = outputs.last_hidden_state[0, 0, :]  # Query representation
         item_embeddings = outputs.last_hidden_state[1:, 0, :]  # Representations of recommended items
-    #print('hello')
+    print('hello')
     # Calculating the cosine similarity
     cosine_similarity = torch.nn.functional.cosine_similarity(query_embeddings.unsqueeze(0), item_embeddings, dim=1)
 
@@ -64,13 +60,11 @@ def return_prediction(dataframe_full,guest_criteria,price_max_criteria,price_min
     dataframe_full['thumbnail'] = dataframe_full['photos/0/thumbnailUrl'].apply(lambda x: '<img src="{}"/>'.format(x) if x else '')
     #dataframe_full['url'] = '<a href="' + dataframe_full['url'] + '">' + dataframe_full['url'] + '</a>'
     dataframe_full['url'] = '<a href="' + dataframe_full['url'] + '"> Click here </a>'
-    #dataframe = dataframe_full[['address','name','stars','numberOfGuests','roomType','pricing/rate/amount','thumbnail','url','comments_list','summary']]
-    dataframe = dataframe_full[['address','name','stars','numberOfGuests','roomType','pricing/rate/amount','thumbnail','url','summary']]
+    dataframe = dataframe_full[['address','name','stars','numberOfGuests','roomType','pricing/rate/amount','thumbnail','url','comments_list','summary']]
     #numeric_cols = ['numberOfGuests','pricing/rate/amount']
     #numeric_cols = ['numberOfGuests']
     #dataframe[numeric_cols] = dataframe[numeric_cols].apply(pd.to_numeric, errors='coerce', axis=1)
-    filtered_df = dataframe[(dataframe['numberOfGuests'] <= guest_criteria) & (dataframe['pricing/rate/amount'] <= price_max_criteria) & (dataframe['pricing/rate/amount'] >= price_min_criteria) & (dataframe['roomType'].str.contains(room_criteria, case=False))]
-    #filtered_df = dataframe
+    filtered_df = dataframe[(dataframe['numberOfGuests'] == guest_criteria) & (dataframe['pricing/rate/amount'] <= price_max_criteria) & (dataframe['pricing/rate/amount'] >= price_min_criteria) & (dataframe['roomType'].str.contains(room_criteria, case=False))]
     #print(type(guest_criteria))
     #print(type(price_max_criteria))
     #print(type(price_min_criteria))
@@ -81,20 +75,17 @@ def return_prediction(dataframe_full,guest_criteria,price_max_criteria,price_min
     
     # Covariates to be used in the model
     #covs = ['address', 'numberOfGuests', 'name', 'pricing/rate/amount', 'roomType', 'stars', 'summary']
-    covs = ['numberOfGuests', 'pricing/rate/amount', 'roomType', 'stars', 'summary']
-    #covs = ['stars', 'summary']
-    #covs = ['summary']
+    #covs = ['name', 'stars', 'summary']
+    covs = ['summary']
     covs_num = ['numberOfGuests', 'pricing/rate/amount', 'stars']
     covs_txt =  [c for c in covs if c not in covs_num]
     
     
     #chamar fn_encode for all covs_txt
-    #user_input = [5, 'comfortable']
-    #user_input = ['near']
-    #user_input = ['Jersey', 6, 'near', 300, 'Entire', 4.5, sim_criteria]
-    user_input = [guest_criteria, round((price_max_criteria + price_min_criteria)/2), room_criteria, 5, sim_criteria]
+    #user_input = ['near', 5, 'comfortable']
+    user_input = ['near']
     input_dict = dict(zip(covs, user_input))
-    print(input_dict)
+    #print(input_dict)
 
     cosine_similarity = list(map(lambda x: fn_encode_covs_txt(x, filtered_df, input_dict), covs_txt))
 
@@ -112,11 +103,9 @@ def return_prediction(dataframe_full,guest_criteria,price_max_criteria,price_min
     weighted_similarity = prd * normalized_covariates.prod(dim=1)
 
     # Ranking recommended items based on weighted similarity
-    #df_result = filtered_df.copy()
-    #df_result['similarity'] = weighted_similarity
-    df_sim = filtered_df.copy()
-    df_sim['similarity'] = weighted_similarity
-    df_result = df_sim[['address','name','stars','numberOfGuests','roomType','pricing/rate/amount','thumbnail','url','similarity']]
+    df_result = filtered_df.copy()
+    df_result['similarity'] = weighted_similarity
+    
 
     return df_result.sort_values('similarity', ascending=False)
     
@@ -136,10 +125,10 @@ Bootstrap(app)
 # http://wtforms.readthedocs.io/en/stable/fields.html
 class PropertyForm(FlaskForm):
     guest_no = IntegerField('Max Number of Guests:')
-    price_max = IntegerField('Max Price:', render_kw={"placeholder": "per night in US$"})
-    price_min = IntegerField('Min Price:', render_kw={"placeholder": "per night in US$"})
+    price_max = IntegerField('Max Price (per night in US$):')
+    price_min = IntegerField('Min Price (per night in US$):')
     room_type = StringField('Property Type:')
-    core_attr = StringField('Core Attributes of the Property:', render_kw={"placeholder": "Type One or More separated by comma"})
+    core_attr = StringField('Type One or More Core Attributes of the Property (separated by comma):')
 
     submit = SubmitField('Analyze')
 
@@ -180,8 +169,8 @@ def prediction():
     #user_similarity = ['near', 5, 'comfortable']
     #user_similarity = 'comfortable'
     
-    filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria=filter_core_attr)
-    #filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria='comfortable')
+    #filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria=filter_core_attr)
+    filtered_results = return_prediction(dataframe_full=df,guest_criteria=filter_guest_no,price_max_criteria=filter_price_max,price_min_criteria=filter_price_min,room_criteria=filter_room_type,sim_criteria='comfortable')
     #filtered_results = return_prediction(dataframe=df,criteria=filter_guest_no)
     # Rest of the code to filter the DataFrame based on the category
     #return render_template('prediction.html',tables=[filtered_results.to_html()], titles=[''])
