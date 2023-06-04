@@ -11,9 +11,9 @@
       min-height: 100%;
     }
     .bg-image {
-      background-color: #323646;
+      background-color: #cac6c6;
       background-repeat: no-repeat;
-      background-image: url('https://cienciadedados-ifsp.github.io/images/logo-ifsp-campinas-pb-alpha-h.png');
+      background-image: url('static/imgs/ifsp_logo.png');
       background-size: 20rem;
       background-position: left;
   }
@@ -21,57 +21,34 @@
     content:" *"; 
     color: red;
   }
-  h1 {
-    margin-bottom: 40px;
-}
-
-label {
-    color: #333;
-}
-
-.btn-send {
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    width: 80%;
-    margin-left: 3px;
-    }
-.help-block.with-errors {
-    color: #ff5050;
-    margin-top: 5px;
-
-}
-
-.card{
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.error{
-             color:red
-       }
 	</style>
 {% endblock %}
 
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+</html>
+-->
+
 {% block content %}
 
-
-<header class="navbar navbar-expand bg-image flex-column flex-md-row bd-navbar">
+<header class="navbar navbar-expand bg-image flex-column flex-md-row bd-navbar" style="align-items: end;">
     <ul class="navbar-nav flex-row ml-md-auto d-md-flex my-3">
-        <li>
-          <span style="color: rgb(208, 224, 224); font-size: medium;">
-            Especialização em Ciência de Dados
-          <br>Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados
-        </span>
+        <li>Especialização em Ciência de Dados
+        <br>Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados
         </li>
-        <li><span style="color: rgb(208, 224, 224);">Membros do grupo:</span></li>
+        <li>Membros do grupo:</li>
             <ul>
-                <li><span style="color: rgb(208, 224, 224);">Gabrielly Baratela de Carvalho (CP3016331)</span></li>
-                <li><span style="color: rgb(208, 224, 224);">Halisson Souza Gomides (CP3016382)</span></li>
-                <li><span style="color: rgb(208, 224, 224);">Hugo Martinelli Watanuki (CP3016692)</span></li>
+                <li>Gabrielly Baratela (CP3016331)</li>
+                <li>Halisson Gomides (CP3016382)</li>
+                <li>Hugo Watanuki (CP3016692)</li>
             </ul>
     </ul>
-
   </header>
 
 

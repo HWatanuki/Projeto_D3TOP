@@ -139,10 +139,11 @@ Bootstrap(app)
 # http://wtforms.readthedocs.io/en/stable/fields.html
 class PropertyForm(FlaskForm):
     guest_no = IntegerField('Max Number of Guests:')
-    price_max = IntegerField('Max Price:', render_kw={"placeholder": "per night in US$"})
-    price_min = IntegerField('Min Price:', render_kw={"placeholder": "per night in US$"})
+    price_max = IntegerField('Max Price (per night in US$):')
+    price_min = IntegerField('Min Price (per night in US$):')
     room_type = StringField('Property Type:')
-    core_attr = StringField('Core Attributes of the Property:', render_kw={"placeholder": "Type One or More separated by comma"})
+    #core_attr = StringField('Type One or More Core Attributes of the Property (separated by comma):')
+    core_attr = StringField('Type One Core Attribute of the Property:')
 
     submit = SubmitField('Analyze')
 
