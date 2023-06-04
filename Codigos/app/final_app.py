@@ -2,7 +2,7 @@ from flask import Flask, render_template, session, redirect, url_for, request
 from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap
 from wtforms import StringField,SubmitField,IntegerField
-from wtforms.validators import NumberRange
+from wtforms.validators import DataRequired, Length
 
 #import numpy as np  
 #from tensorflow.keras.models import load_model
@@ -18,7 +18,7 @@ from sklearn.preprocessing import StandardScaler
 #flower_scaler = joblib.load('iris_scaler.pkl')
 #df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-relevant_words_2023-04-13_03-28-09-439.csv')
 #df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-spacy_2023-04-13_03-28-09-439.csv')
-df = pd.read_csv('D:\GitHub\Projeto_D3TOP\Datasets\processed\dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv')
+df = pd.read_csv('https://media.githubusercontent.com/media/HWatanuki/Projeto_D3TOP/main/Datasets/processed/dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv')
 
 # Loading pre-trained bert
 model_name = 'bert-base-uncased'
@@ -125,10 +125,10 @@ Bootstrap(app)
 # http://wtforms.readthedocs.io/en/stable/fields.html
 class PropertyForm(FlaskForm):
     guest_no = IntegerField('Max Number of Guests:')
-    price_max = IntegerField('Max Price (per night in US$):')
-    price_min = IntegerField('Min Price (per night in US$):')
+    price_max = IntegerField('Max Price:', render_kw={"placeholder": "per night in US$"})
+    price_min = IntegerField('Min Price:', render_kw={"placeholder": "per night in US$"})
     room_type = StringField('Property Type:')
-    core_attr = StringField('Type One or More Core Attributes of the Property (separated by comma):')
+    core_attr = StringField('Core Attributes of the Property:', render_kw={"placeholder": "Type One or More separated by comma"})
 
     submit = SubmitField('Analyze')
 
