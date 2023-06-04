@@ -106,23 +106,38 @@ https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_
 ## e) Extração de características
 O objetivo da etapa de extração de características era resumir todas as reviews de cada anúncio em uma sentença com as palavras-chave mais relevantes no documento. Seguimos com duas abordagens
 
+
 **1. Teste TF-IDF + Sentence Score: **
+
 Utilizamos o método TF-IDF para coletar as palavras mais relevantes dos reviews e criamos scores para as sentenças de acordo com o resultado do TF-IDF. O resumo escolhia as sentenças de maiores scores que representassem 20% de todos os reviews.
+
 **Decidimos não seguir com essa abordagem** pois era necessário realizar reconhecimento de entidades para remover nomes próprios e outros processamentos para que o resumo com as palavras relevantes fizesse sentido e não ficasse tão grande. 
         
+        
 **2. LSA Summarizer (Análise Semântica Latente):**
+
 É uma técnica de NLP para analisar relacionamentos entre um conjunto de documentos e os termos que eles contêm, produzindo um conjunto de conceitos relacionados aos documentos e termos. A LSA assume que as palavras com significado próximo ocorrerão em trechos de texto semelhantes (hipótese distributiva), e usa o SVD (decomposição de valor singular) e a similaridade de cosseno para reduzir os textos em uma quantidade de sentenças pré-definida.
+
 **Essa foi a abordagem utilizada no projeto.**
+
 
 ## f) Modelos de Machine Learning 
 Para a modelagem, realizamos duas abordagens:
+
+
 **1. TF-IDF Vectorizer + SVM:**
+
 Decidimos realizar modelagem com o TF-IDF Vectorizer e SVM (support vector machines) para realizar recomendações baseadas em palavras-chave das reviews realizadas pelos usuários. Fizemos um teste e os resultados não estavam aderentes, portanto, **optamos por não seguir com essa abordagem.**
     
+    
 **2. BERT pré-treinado com o modelo `bert-base-uncased`:**
+
 BERT (Bidirectional Encoder Representations from Transformers) é um modelo de Deep Learning criado por pesquisadores do Google AI Language. A principal vantagem do BERT é a aplicação do treinamento bidirecional do Transformer (um modelo de atenção) ao NLP, isso é, que pode ter um senso mais profundo de contexto e fluxo de linguagem uma vez que entende a sequência de texto da esquerda para a direita e da direita para a esquerda. Além disso, utilizar um modelo pré-treinado evolui significativamente os resultados do modelo após ajuste fino, e com drástica redução de esforço de treinamento. 
+
 Utilizamos os resultados do BERT e a similaridade de cossenos para gerar o produto de similaridade das covariáveis que utilizamos no nosso sistema de recomendação, para finalmente ordenar os anúncios do mais similar para o menos similar e exibir para o usuário.
+
 **Optamos por seguir com essa abordagem.**
+
 
 ## g) Protocolo de experimentos e validação
 Como nossa abordagem é não supervisionada, fizemos testes manuais para validar se o resultado retornado como recomendação de acordo com os parâmetros de entrada do sistema estavam fazendo sentido. Fizemos testes alterando o valor de cada covariável, e em todos os casos os retornos fizeram sentido. Foram 30 testes, alterando os inputs de cada covariável, uma de cada vez.
