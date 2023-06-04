@@ -151,6 +151,7 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 - Incluir no sistema a avaliação de datas disponíveis de acordo com o interesse do usuário
 - Considerar endereços próximos ao desejado pelo cliente por análise geográfica
 - Monitorar tempo de execução dos modelos e outras métricas para acompanhar desempenho do sistema
+- Detecção dos idiomas de cada review e tradução para o idioma do anúncio
 
 ## i) Deployment da solução em produção
 
