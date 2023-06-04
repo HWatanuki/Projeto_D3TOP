@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Thank You. Here is the Information You Gave:</h1>
+    <ul>
+	<li>Number of Guests: {{session['guest_no']}}</li>
+	<li>Max Price per night in US$:  {{session['price_max']}}</li>
+    <li>Min Price per night in US$:  {{session['price_min']}}</li>
+	<li>Room Type: {{session['room_type']}}</li>
+	<li>Core Attributes:  {{session['core_attr']}}</li>
+    </ul>
+    <h2>Your Predicted Properties are:</h2>
+        
+    <div align="center">
+        <table>
+            <h3>
+                {% for table in tables %}
+                <h4>{{titles[loop.index]}}</h4>
+                {{ table | safe }} {% endfor %}
+            </h3>
+        </table>
+    </div>
+</body>
+</html>

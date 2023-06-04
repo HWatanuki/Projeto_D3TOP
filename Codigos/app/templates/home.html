@@ -1,0 +1,19 @@
+<h1>Welcome to AirBNB prediction</h1>
+<h2>Please enter your property preferences below:</h2>
+<form method="POST">
+ {# This hidden_tag is a CSRF security feature. #}
+ {{ form.hidden_tag() }}
+ {{ form.guest_no.label }} {{form.guest_no}}
+ <br>
+ {{ form.price_max.label}} {{form.price_max}}
+ <br>
+ {{ form.price_min.label}} {{form.price_min}}
+ <br>
+ {{form.room_type.label}}
+ <input type="radio" name="options" id="Room" value="Room"> Room </input>
+ <input type="radio" name="options" id="Entire Unit" value="Entire"> Entire Unit </input>
+ <br>
+ {{form.core_attr.label}}{{form.core_attr}}
+ <br>
+ {{ form.submit() }}
+</form>
