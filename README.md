@@ -107,14 +107,14 @@ https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_
 O objetivo da etapa de extração de características era resumir todas as reviews de cada anúncio em uma sentença com as palavras-chave mais relevantes no documento. Seguimos com duas abordagens
 
 
-**1. Teste TF-IDF + Sentence Score: **
+### 1. Teste TF-IDF + Sentence Score: 
 
 Utilizamos o método TF-IDF para coletar as palavras mais relevantes dos reviews e criamos scores para as sentenças de acordo com o resultado do TF-IDF. O resumo escolhia as sentenças de maiores scores que representassem 20% de todos os reviews.
 
 **Decidimos não seguir com essa abordagem** pois era necessário realizar reconhecimento de entidades para remover nomes próprios e outros processamentos para que o resumo com as palavras relevantes fizesse sentido e não ficasse tão grande. 
         
         
-**2. LSA Summarizer (Análise Semântica Latente):**
+### 2. LSA Summarizer (Análise Semântica Latente):
 
 É uma técnica de NLP para analisar relacionamentos entre um conjunto de documentos e os termos que eles contêm, produzindo um conjunto de conceitos relacionados aos documentos e termos. A LSA assume que as palavras com significado próximo ocorrerão em trechos de texto semelhantes (hipótese distributiva), e usa o SVD (decomposição de valor singular) e a similaridade de cosseno para reduzir os textos em uma quantidade de sentenças pré-definida.
 
