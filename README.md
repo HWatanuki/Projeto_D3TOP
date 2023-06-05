@@ -181,7 +181,7 @@ Por fim, a aplicação foi hospedada na plataforma em nuvem Heroku e pode ser ac
 
 Obs.: No momento a aplicação encontra-se online mas inoperante no Heroku por não atender ao critério padrão de tempo de resposta exigido pela plataforma. Análises estão sendo feitas para tornar a operação do site possível.
 
-## j) Vídeo de até 10 min explicando o projeto!
+## j) Vídeo explicativo do projeto e demonstração da aplicação!
 Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
 
 
