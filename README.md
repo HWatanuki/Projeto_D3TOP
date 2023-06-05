@@ -167,7 +167,7 @@ Abaixo uma ilustração da página de entrada de dados da aplicação:
 
 ![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/dc91cf5e-d9c5-49e2-8d1d-92947453e7a1)
 
-Uma vez inseridos na aplicação, os parâmetros de entrada foram utilizados para filtrar os registros das propriedades no dataset pré-processado pelo LSA Summarizer:
+Uma vez inseridos na aplicação, os parâmetros de entrada foram utilizados para filtrar os registros das propriedades no dataset pré-processado pelo LSA Summarizer: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv
 
 Esse dataset juntamente com os parâmetros de entrada foram então submetidos ao modelo BERT pré-treinado para calcular a similaridade de cossenos e gerar o produto de similaridade das covariáveis.
 
@@ -175,10 +175,11 @@ Como saída o usuário final recebe uma relação de anúncios do AirBNB ordenad
 
 ![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/5f329452-bb8c-4958-9aa8-ec863c422185)
 
+Além do índice de similaridade, a saída ainda contempla dados das propriedades, tais como endereço, número máximo de hóspedes, preço da diaria, número de estrelas de avaliação, bem como uma imagem ilustrativa e o link para acesso ao anúncio da propriedade no AirBNB.
 
+Por fim, a aplicação foi hospedada na plataforma em nuvem Heroku e pode ser acessada por meio da seguinte URL: https://airbnb-deployment-app.herokuapp.com/
 
-
-
+Obs.: No momento a aplicação encontra-se online mas inoperante no Heroku por não atender ao critério padrão de tempo de resposta exigido pela plataforma. Análises estão sendo feitas para tornar a operação do site possível.
 
 ## j) Vídeo de até 10 min explicando o projeto!
 Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
