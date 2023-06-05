@@ -157,13 +157,23 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 - Detecção dos idiomas de cada review e tradução para o idioma do anúncio
 
 ## i) Deployment da solução em produção
-A implementação da solução para o usuário final foi feita por meio de uma página web desenvolvida em código python e framework flask. Uma aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
+A implementação da solução para o usuário final foi feita por meio de um aplicativo web desenvolvido em código python e framework flask. A aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
 - número mínimo de hospedes 
 - preços mínimo e máximo para a diária
 - tipo de acomodação (quarto ou imóvel)
-- um critério livre ligado à preferência pessoal do usuário ou principal característica buscada em uma propriedade (ex.: conforto, luxo, modernidade, etc)
+- um critério livre ligado à preferência pessoal do usuário ou principal característica buscada em uma propriedade (ex.: confortável, luxuoso, moderno, etc)
 Abaixo uma ilustração da página de entrada de dados da aplicação:
 ![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/dc91cf5e-d9c5-49e2-8d1d-92947453e7a1)
+
+Uma vez inseridos na aplicação, os parâmetros de entrada foram utilizados para filtrar os registros das propriedades no dataset pré-processado pelo LSA Summarizer:
+
+Esse dataset juntamente com os parâmetros de entrada foram então submetidos ao modelo BERT pré-treinado para calcular a similaridade de cossenos e gerar o produto de similaridade das covariáveis.
+
+Como saída o usuário final recebe uma relação de anúncios do AirBNB ordenada por nível descrecente do índice de similaridade, conforme ilustrado abaixo:
+
+![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/5f329452-bb8c-4958-9aa8-ec863c422185)
+
+
 
 
 
