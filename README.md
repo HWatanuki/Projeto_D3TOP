@@ -103,7 +103,7 @@ Após a conversão do dataset em um dataframe, as seguintes operações principa
 A versão final dos códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: 
 https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.3.ipynb
 
-A versão final do dataset utilizado pré-processado utilizado nas etapas seguintes está disponível em:
+A versão final do dataset pré-processado utilizado nas etapas seguintes está disponível em:
 [https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-spacy](https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-spacy_2023-04-13_03-28-09-439.csv)
 
 ## e) Extração de características
@@ -157,9 +157,32 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 - Detecção dos idiomas de cada review e tradução para o idioma do anúncio
 
 ## i) Deployment da solução em produção
+A implementação da solução para o usuário final foi feita por meio de um aplicativo web desenvolvido em código python e framework flask. A aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
+- número mínimo de hospedes 
+- preços mínimo e máximo para a diária
+- tipo de acomodação (quarto ou imóvel)
+- a principal característica buscada em uma propriedade (ex.: confortável, luxuoso, moderno, etc)
+
+Abaixo uma ilustração da página de entrada de dados da aplicação:
+
+![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/dc91cf5e-d9c5-49e2-8d1d-92947453e7a1)
+
+Uma vez inseridos na aplicação, os parâmetros de entrada foram utilizados para filtrar os registros das propriedades no dataset pré-processado pelo LSA Summarizer: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-summary_2023-04-13_03-28-09-439.csv
+
+Esse dataset juntamente com os parâmetros de entrada foram então submetidos ao modelo BERT pré-treinado para calcular a similaridade de cossenos e gerar o produto de similaridade das covariáveis.
+
+Como saída o usuário final recebe uma relação de anúncios do AirBNB ordenada por nível descrecente do índice de similaridade, conforme ilustrado abaixo:
+
+![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/5f329452-bb8c-4958-9aa8-ec863c422185)
+
+Além do índice de similaridade, a saída ainda contempla dados das propriedades, tais como endereço, número máximo de hóspedes, preço da diaria, número de estrelas de avaliação, bem como uma imagem ilustrativa e o link para acesso ao anúncio da propriedade no AirBNB.
+
+Por fim, a aplicação foi hospedada na plataforma em nuvem Heroku e pode ser acessada por meio da seguinte URL: https://airbnb-deployment-app.herokuapp.com/
+
+Obs.: No momento a aplicação encontra-se online mas inoperante no Heroku por não atender ao critério padrão de tempo de resposta exigido pela plataforma. Análises estão sendo feitas para tornar a operação do site possível.
 
 ## j) Vídeo de até 10 min explicando o projeto!
-<Inserir link>
+Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
 
 
 
