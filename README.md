@@ -2,7 +2,7 @@
 Projeto em grupo da disciplina D3TOP - Tópicos em Ciência de Dados do curso de Especialização em Ciência de Dados do IFSP Campinas.
 
 ## Membros do grupo: 
-- Gabrielly Baratela (CP3016331)
+- Gabrielly Baratela de Carvalho (CP3016331)
 - Halisson Souza Gomides (CP3016382)
 - Hugo Martinelli Watanuki (CP3016692)
 
@@ -15,16 +15,16 @@ A decisão de investimento em um imóvel para a finalidade de aluguel de curta t
 
 ## b) Objetivo de negócio ou científico associado ao problema
 
-O objetivo deste trabalho é desenvolver um protótipo de sistema de recomendações de anúncios de imóveis para aluguel, de acordo com o interesse e o perfil desejado do locatário, para orientar a melhor tomada de decisão e simplificar sua jornada de busca e comparação de anúncios. Um sistema de recomendação que variáveis descritivas além dos filtros padrões do aplicativo, torna a experiência de busca do cliente diferenciada na plataforma.
+O objetivo deste trabalho é desenvolver um protótipo de sistema de recomendações de anúncios de imóveis para aluguel, de acordo com o interesse e o perfil desejado do locatário, para orientar a melhor tomada de decisão e simplificar sua jornada de busca e comparação de anúncios. Um sistema de recomendação que usa variáveis descritivas além dos filtros padrões do aplicativo, torna a experiência de busca do cliente diferenciada na plataforma.
 
 ## c) Base de dados
 
 O desafio tem início na própria origem dos dados: desde a captura automatizada à estruturação da base em atributos delimitados; e segue relevante para o sistema de recomendação, uma vez que nem todos os dados estão prontamente consolidados nos anúncios das plataformas. 
 
-Na tentativa de endereçar o primeiro desafio, o uso de ferramentas de web scraping e abordagens de processamento de linguagem natural pode representar uma alternativa viável. Por fim, a solução se apoiará em algoritmos de machine learning para fornecer as recomendações adaptadas às necessidades do locatário.
+Na tentativa de endereçar o primeiro desafio, o uso de ferramentas de web scraping e abordagens de processamento de linguagem natural pode representar uma alternativa viável. 
 
 ### Descrição da base de dados
-Os conjuntos de dados a serem extraídos, processados e analisados consistem nos anúncios de aluguel de curta duração da plataforma Airbnb e seus respectivos atributos. Num primeiro momento, os dados serão extraídos com o auxílio de ferramentas de web scraping. Em seguida, técnicas de processamento de linguagem natural serão aplicadas para limpeza, pré-processamento e estruturação dos dados. 
+Os conjuntos de dados extraídos, processados e analisados consistem nos anúncios de aluguel de curta duração da plataforma Airbnb e seus respectivos atributos. Num primeiro momento, os dados foram extraídos com o auxílio de ferramentas de web scraping. Em seguida, técnicas de processamento de linguagem natural foram aplicadas para limpeza, pré-processamento e estruturação dos dados. 
 
 A base de dados utilizada no trabalho foi extraída a partir da plataforma Airbnb usando uma ferramenta de web scraping disponível no Apify: o Airbnb Scraper (https://apify.com/dtrungtin/airbnb-scraper). 
 
@@ -73,7 +73,7 @@ A lista completa de atributos disponíveis nos anúncios processados pelo Airbnb
 
 O objetivo dessa primeira extração foi selecionar anúncios de cidades populosas e localizadas em diferentes países com o intuito de obter uma amostra de anúncios com maior diversidade de imóveis para aluguel de curta temporada, bem como que contivessem comentários em mais do que um idioma.
 
-Os datasets utilizados estão disponíveis aqui: https://github.com/HWatanuki/Projeto_D3TOP/tree/main/Datasets
+Os datasets brutos utilizados estão disponíveis aqui: https://github.com/HWatanuki/Projeto_D3TOP/tree/main/Datasets
   
 
 ## d) Etapa de limpeza e pré-processamento
@@ -137,7 +137,7 @@ Decidimos realizar modelagem com o TF-IDF Vectorizer e SVM (support vector machi
 
 BERT (Bidirectional Encoder Representations from Transformers) é um modelo de Deep Learning criado por pesquisadores do Google AI Language. A principal vantagem do BERT é a aplicação do treinamento bidirecional do Transformer (um modelo de atenção) ao NLP, isso é, que pode ter um senso mais profundo de contexto e fluxo de linguagem uma vez que entende a sequência de texto da esquerda para a direita e da direita para a esquerda. Além disso, utilizar um modelo pré-treinado evolui significativamente os resultados do modelo após ajuste fino, e com drástica redução de esforço de treinamento. 
 
-Utilizamos os resultados do BERT e a similaridade de cossenos para gerar o produto de similaridade das covariáveis que utilizamos no nosso sistema de recomendação, para finalmente ordenar os anúncios do mais similar para o menos similar e exibir para o usuário.
+Utilizamos os resultados do BERT e a similaridade de cossenos para gerar o produto de similaridade das covariáveis que utilizamos no nosso sistema de recomendação, para finalmente ordenar os anúncios do mais similar para o menos similar e exibir para o usuário. A versão final do código utilizado para a modelagem está disponível aqui: https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/nlp_parte02_v1_BERT.ipynb
 
 **Optamos por seguir com essa abordagem.**
 
@@ -157,8 +157,8 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 - Detecção dos idiomas de cada review e tradução para o idioma do anúncio
 
 ## i) Deployment da solução em produção
-A implementação da solução para o usuário final foi feita por meio de um aplicativo web desenvolvido em código python e framework flask. A aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
-- número mínimo de hospedes 
+A implementação da solução para o usuário final foi feita por meio de um aplicativo web desenvolvido em código python e framework Flask (https://github.com/HWatanuki/Projeto_D3TOP/blob/main/app.py). A aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
+- número mínimo de hóspedes 
 - preços mínimo e máximo para a diária
 - tipo de acomodação (quarto ou imóvel)
 - a principal característica buscada em uma propriedade (ex.: confortável, luxuoso, moderno, etc)
@@ -173,16 +173,16 @@ Esse dataset juntamente com os parâmetros de entrada foram então submetidos ao
 
 Como saída o usuário final recebe uma relação de anúncios do AirBNB ordenada por nível descrecente do índice de similaridade, conforme ilustrado abaixo:
 
-![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/5f329452-bb8c-4958-9aa8-ec863c422185)
+![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/778c5741-7af9-4553-9589-399e428039e4)
 
-Além do índice de similaridade, a saída ainda contempla dados das propriedades, tais como endereço, número máximo de hóspedes, preço da diaria, número de estrelas de avaliação, bem como uma imagem ilustrativa e o link para acesso ao anúncio da propriedade no AirBNB.
+Além do índice de similaridade, a saída ainda contempla dados das propriedades, tais como endereço, número máximo de hóspedes, preço da diária, número de estrelas de avaliação, bem como uma imagem ilustrativa e o link para acesso ao anúncio da propriedade no AirBNB.
 
 Por fim, a aplicação foi hospedada na plataforma em nuvem Heroku e pode ser acessada por meio da seguinte URL: https://airbnb-deployment-app.herokuapp.com/
 
-Obs.: No momento a aplicação encontra-se online mas inoperante no Heroku por não atender ao critério padrão de tempo de resposta exigido pela plataforma. Análises estão sendo feitas para tornar a operação do site possível.
+Obs.: No momento a aplicação encontra-se online no Heroku mas inoperante por não atender ao critério padrão de tempo de resposta exigido pela plataforma. Análises estão sendo feitas para tornar a operação do site possível.
 
 ## j) Vídeo explicativo do projeto e demonstração da aplicação!
-Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
+Caso queira conhecer mais sobre o projeto ou ver uma demo do aplicativo, segue o link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
 
 
 
