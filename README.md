@@ -157,6 +157,16 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 - Detecção dos idiomas de cada review e tradução para o idioma do anúncio
 
 ## i) Deployment da solução em produção
+A implementação da solução para o usuário final foi feita por meio de uma página web desenvolvida em código python e framework flask. Uma aplicação foi desenvolvida para receber os parâmetros de entrada do usuário, tais como:
+- número mínimo de hospedes 
+- preços mínimo e máximo para a diária
+- tipo de acomodação (quarto ou imóvel)
+- um critério livre ligado à preferência pessoal do usuário ou principal característica buscada em uma propriedade (ex.: conforto, luxo, modernidade, etc)
+Abaixo uma ilustração da página de entrada de dados da aplicação:
+![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/dc91cf5e-d9c5-49e2-8d1d-92947453e7a1)
+
+
+
 
 ## j) Vídeo de até 10 min explicando o projeto!
 Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
