@@ -161,8 +161,10 @@ A implementação da solução para o usuário final foi feita por meio de um ap
 - número mínimo de hospedes 
 - preços mínimo e máximo para a diária
 - tipo de acomodação (quarto ou imóvel)
-- um critério livre ligado à preferência pessoal do usuário ou principal característica buscada em uma propriedade (ex.: confortável, luxuoso, moderno, etc)
+- a principal característica buscada em uma propriedade (ex.: confortável, luxuoso, moderno, etc)
+
 Abaixo uma ilustração da página de entrada de dados da aplicação:
+
 ![image](https://github.com/HWatanuki/Projeto_D3TOP/assets/50485300/dc91cf5e-d9c5-49e2-8d1d-92947453e7a1)
 
 Uma vez inseridos na aplicação, os parâmetros de entrada foram utilizados para filtrar os registros das propriedades no dataset pré-processado pelo LSA Summarizer:
