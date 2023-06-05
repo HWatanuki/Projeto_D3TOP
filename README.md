@@ -103,7 +103,7 @@ Após a conversão do dataset em um dataframe, as seguintes operações principa
 A versão final dos códigos utilizados para a limpeza e pré-processamento dos dados estão disponíveis nesse notebook: 
 https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Codigos/Data_preprocessing_v0.3.ipynb
 
-A versão final do dataset utilizado pré-processado utilizado nas etapas seguintes está disponível em:
+A versão final do dataset pré-processado utilizado nas etapas seguintes está disponível em:
 [https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-spacy](https://github.com/HWatanuki/Projeto_D3TOP/blob/main/Datasets/processed/dataset_airbnb-processed-spacy_2023-04-13_03-28-09-439.csv)
 
 ## e) Extração de características
