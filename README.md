@@ -159,7 +159,7 @@ Os resultados obtidos pelo sistema de recomendação criado são satisfatórios,
 ## i) Deployment da solução em produção
 
 ## j) Vídeo de até 10 min explicando o projeto!
-<Inserir link>
+Link do vídeo de apresentação: https://www.youtube.com/watch?v=sCVZk1CMpSA
 
 
 
